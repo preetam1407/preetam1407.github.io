@@ -5,14 +5,47 @@
   <title>Preetam Chhimpa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- WORLD-CLASS CSS -->
+  <!-- MVP.css (world-class minimal CSS) -->
   <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 
   <style>
     body {
       max-width: 980px;
       margin: auto;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1.5rem;
+    }
+
+    header {
+      text-align: left;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      margin-bottom: 0.3rem;
+    }
+
+    header p {
+      margin: 0.2rem 0;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    h3 {
+      margin-top: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    ul {
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -23,7 +56,7 @@
   <h1>Preetam Chhimpa</h1>
   <p>
     M.Tech Data Science, IIT Roorkee (CGPA: 9.29)<br>
-    Expected Graduation: June 2026
+    Expected graduation: June 2026
   </p>
   <p>
     <a href="mailto:preetam_c@mfs.iitr.ac.in">Email</a> ·
@@ -36,66 +69,130 @@
 <main>
 
 <section>
-  <h2>Research Interests</h2>
+  <h2>Research interests</h2>
   <ul>
-    <li>Efficient multimodal learning (vision + language)</li>
-    <li>Adversarial evaluation and robustness of vision-language models</li>
+    <li>Efficient multimodal learning (vision + language), especially compute- and memory-aware fusion</li>
+    <li>Adversarial evaluation and robustness of vision-language models under distribution shifts</li>
   </ul>
 </section>
 
 <section>
-  <h2>Current Research</h2>
+  <h2>Current research</h2>
   <p>
     <strong>Student Researcher, SafeTrip Lab, IIT Roorkee (Jun 2025 – Present)</strong><br>
     Compute-efficient multimodal fusion for autonomous driving (multi-view camera → T5-aligned scene embedding).
   </p>
   <ul>
-    <li>52% parameter reduction via anchor-token pruning and Perceiver-style cross-attention</li>
-    <li>Multi-view VQA results: EM 51%, F1 70%, BLEU-4 47.1, ROUGE-L 69.1, CIDEr 2.99</li>
+    <li>Reduced parameters by <strong>52%</strong> using anchor-token pruning, Perceiver cross-attention, and gated view pooling</li>
+    <li>Results on multi-view VQA: <strong>EM 51%</strong>, <strong>F1 70%</strong>, BLEU-4 47.1, ROUGE-L 69.1, CIDEr 2.99</li>
   </ul>
 </section>
 
 <section>
-  <h2>Selected Projects</h2>
+  <h2>Selected projects (code)</h2>
 
-  <h3>Compute-efficient Multimodal Fusion (GeoAnchors)</h3>
-  <p><a href="https://github.com/preetam1407/GeoAnchors">GitHub Repository</a></p>
+  <h3>1) Compute-efficient multimodal fusion (GeoAnchors)</h3>
+  <p>
+    Repo:
+    <a href="https://github.com/preetam1407/GeoAnchors">
+      github.com/preetam1407/GeoAnchors
+    </a>
+  </p>
 
-  <h3>Adversarial Evaluation of Vision-Language Models</h3>
-  <p><a href="https://github.com/preetam1407/Adversarial-Evaluation-of-VLM">GitHub Repository</a></p>
+  <h3>2) Adversarial Evaluation of Vision-Language Models (Aug 2025 – Nov 2025)</h3>
+  <p>
+    Repo:
+    <a href="https://github.com/preetam1407/Adversarial-Evaluation-of-VLM">
+      github.com/preetam1407/Adversarial-Evaluation-of-VLM
+    </a>
+  </p>
   <ul>
-    <li>IMP-v1-3B and Qwen2.5-VL-7B</li>
-    <li>Answer flip rates: 75.1%, 38.4%</li>
+    <li>Training-free adversarial evaluation on <strong>IMP-v1-3B</strong> and <strong>Qwen2.5-VL-7B</strong></li>
+    <li>Answer flip rates: <strong>75.1%</strong> (IMP-v1-3B), <strong>38.4%</strong> (Qwen2.5-VL-7B)</li>
+    <li>Counting deviation (mean absolute shift): <strong>6.74</strong>, <strong>1.24</strong></li>
   </ul>
 
-  <h3>DiffGraph+ (Heterogeneous Graph Diffusion)</h3>
-  <p><a href="https://github.com/preetam1407/DiffGraph">GitHub Repository</a></p>
+  <h3>3) DiffGraph+ (Heterogeneous Graph Diffusion) (Feb 2025 – Apr 2025)</h3>
+  <p>
+    Repo:
+    <a href="https://github.com/preetam1407/DiffGraph">
+      github.com/preetam1407/DiffGraph
+    </a>
+  </p>
+  <ul>
+    <li>Extended DiffGraph (WSDM’25) for heterogeneous graphs with automatic view discovery via Graph Transformer</li>
+    <li>DBLP author classification: <strong>Micro-F1 78%</strong>, <strong>Macro-F1 77%</strong>, <strong>AUC 93%</strong></li>
+  </ul>
 
-  <h3>Flood Forecasting System</h3>
+  <h3>4) Flood Forecasting System (Aug 2023 – Nov 2023)</h3>
   <p>
     <a href="https://github.com/preetam1407/Flood-Forecasting-Model">Code</a> ·
     <a href="https://flood-forecasting-system.onrender.com/flood-forecasting">Dashboard</a>
   </p>
+  <ul>
+    <li>Pixel-level inundation mapping for the Narmada basin; historical F1: <strong>0.86</strong> (2001–2012)</li>
+  </ul>
 
-  <h3>Cminusminus — Programming Language & Compiler</h3>
-  <p><a href="https://github.com/IITGN-CS327-2024/our-own-compiler-com-piler-t6">GitHub Repository</a></p>
+  <h3>5) Cminusminus — Programming Language & Compiler (Jan 2024 – Apr 2024)</h3>
+  <p>
+    Repo:
+    <a href="https://github.com/IITGN-CS327-2024/our-own-compiler-com-piler-t6">
+      github.com/IITGN-CS327-2024/our-own-compiler-com-piler-t6
+    </a>
+  </p>
+  <ul>
+    <li>Compiler toolchain using <strong>Lark</strong>, WASM backend, unit and integration testing</li>
+  </ul>
 
-  <h3>Waste Segregation System</h3>
+  <h3>6) Waste Segregation System (Feb 2022 – May 2022)</h3>
   <p>
     <a href="https://github.com/preetam1407/Waste-Segregation-using-Deep-learning">Code</a> ·
     <a href="https://github.com/preetam1407/Waste-Segregation-using-Deep-learning/tree/main/prototype">Prototype</a>
   </p>
+  <ul>
+    <li>ResNet-50 fine-tuning; <strong>94%</strong> validation accuracy; OpenCV + Arduino prototype</li>
+  </ul>
 </section>
 
 <section>
-  <h2>Open Source</h2>
+  <h2>Open-source (Hugging Face Transformers — BLT)</h2>
   <ul>
     <li>
-      Hugging Face Transformers (BLT):<br>
-      <a href="https://github.com/huggingface/transformers/pull/42685">PR #42685</a>,
-      <a href="https://github.com/huggingface/transformers/issues/42629">Issue #42629</a>
+      PR:
+      <a href="https://github.com/huggingface/transformers/pull/42685">
+        huggingface/transformers#42685
+      </a>
+    </li>
+    <li>
+      Issue:
+      <a href="https://github.com/huggingface/transformers/issues/42629">
+        huggingface/transformers#42629
+      </a>
+    </li>
+    <li>
+      Contributed fixes for BLT training and CI stability
+      (KV-cache generation mismatches, initialization, shared training tests).
     </li>
   </ul>
+</section>
+
+<section>
+  <h2>Experience (industry)</h2>
+
+  <p>
+    <strong>Scientific Computing Contractor, Mercor (Jul 2025 – Nov 2025)</strong><br>
+    Built terminal-based scientific benchmarks for evaluating AI agents; auto-graded tasks with deterministic scoring.
+  </p>
+
+  <p>
+    <strong>Software Engineer Intern, IntentSignal Systems (May 2024 – Sep 2024)</strong><br>
+    Built a data-as-a-service platform (Next.js) serving <strong>15M+</strong> B2B records; JWT auth, search, CSV export; reduced page load time by <strong>40%</strong>.
+  </p>
+
+  <p>
+    <strong>Cloud Operations Intern, Patible AI (May 2023 – Aug 2023)</strong><br>
+    Scraping and ingestion pipelines; <strong>2.6M+</strong> records on AWS (EC2/S3); PostgreSQL ingestion optimization.
+  </p>
 </section>
 
 <section>
