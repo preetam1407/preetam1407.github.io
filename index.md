@@ -3,7 +3,7 @@ layout: home
 title: Preetam Chhimpa
 ---
 
-**Preetam Chhimpa**  
+# Preetam Chhimpa
 M.Tech Data Science, IIT Roorkee (CGPA: 9.29) — Expected graduation: 06/2026  
 Email: [preetam_c@mfs.iitr.ac.in](mailto:preetam_c@mfs.iitr.ac.in) ·  
 GitHub: [github.com/preetam1407](https://github.com/preetam1407) ·  
