@@ -5,7 +5,7 @@
   <title>Preetam Chhimpa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- MVP.css (world-class minimal CSS) -->
+  <!-- MVP.css -->
   <link rel="stylesheet" href="https://unpkg.com/mvp.css">
 
   <style>
@@ -32,13 +32,29 @@
       margin-bottom: 2.5rem;
     }
 
-    h3 {
-      margin-top: 1.2rem;
-      margin-bottom: 0.3rem;
+    /* ---- PROJECT NUMBERING FIX ---- */
+    section.projects {
+      counter-reset: project;
+    }
+
+    section.projects h3::before {
+      counter-increment: project;
+      content: counter(project) ". ";
+      font-weight: 600;
+    }
+
+    section.projects h3 {
+      margin-top: 1.8rem;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
     }
 
     ul {
       margin-top: 0.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    ul li {
       margin-bottom: 0.4rem;
     }
 
@@ -88,10 +104,10 @@
   </ul>
 </section>
 
-<section>
+<section class="projects">
   <h2>Selected projects (code)</h2>
 
-  <h3>1) Compute-efficient multimodal fusion (GeoAnchors)</h3>
+  <h3>Compute-efficient multimodal fusion (GeoAnchors)</h3>
   <p>
     Repo:
     <a href="https://github.com/preetam1407/GeoAnchors">
@@ -99,7 +115,7 @@
     </a>
   </p>
 
-  <h3>2) Adversarial Evaluation of Vision-Language Models (Aug 2025 – Nov 2025)</h3>
+  <h3>Adversarial Evaluation of Vision-Language Models (Aug 2025 – Nov 2025)</h3>
   <p>
     Repo:
     <a href="https://github.com/preetam1407/Adversarial-Evaluation-of-VLM">
@@ -112,7 +128,7 @@
     <li>Counting deviation (mean absolute shift): <strong>6.74</strong>, <strong>1.24</strong></li>
   </ul>
 
-  <h3>3) DiffGraph+ (Heterogeneous Graph Diffusion) (Feb 2025 – Apr 2025)</h3>
+  <h3>DiffGraph+ (Heterogeneous Graph Diffusion) (Feb 2025 – Apr 2025)</h3>
   <p>
     Repo:
     <a href="https://github.com/preetam1407/DiffGraph">
@@ -124,7 +140,7 @@
     <li>DBLP author classification: <strong>Micro-F1 78%</strong>, <strong>Macro-F1 77%</strong>, <strong>AUC 93%</strong></li>
   </ul>
 
-  <h3>4) Flood Forecasting System (Aug 2023 – Nov 2023)</h3>
+  <h3>Flood Forecasting System (Aug 2023 – Nov 2023)</h3>
   <p>
     <a href="https://github.com/preetam1407/Flood-Forecasting-Model">Code</a> ·
     <a href="https://flood-forecasting-system.onrender.com/flood-forecasting">Dashboard</a>
@@ -133,7 +149,7 @@
     <li>Pixel-level inundation mapping for the Narmada basin; historical F1: <strong>0.86</strong> (2001–2012)</li>
   </ul>
 
-  <h3>5) Cminusminus — Programming Language & Compiler (Jan 2024 – Apr 2024)</h3>
+  <h3>Cminusminus — Programming Language & Compiler (Jan 2024 – Apr 2024)</h3>
   <p>
     Repo:
     <a href="https://github.com/IITGN-CS327-2024/our-own-compiler-com-piler-t6">
@@ -144,7 +160,7 @@
     <li>Compiler toolchain using <strong>Lark</strong>, WASM backend, unit and integration testing</li>
   </ul>
 
-  <h3>6) Waste Segregation System (Feb 2022 – May 2022)</h3>
+  <h3>Waste Segregation System (Feb 2022 – May 2022)</h3>
   <p>
     <a href="https://github.com/preetam1407/Waste-Segregation-using-Deep-learning">Code</a> ·
     <a href="https://github.com/preetam1407/Waste-Segregation-using-Deep-learning/tree/main/prototype">Prototype</a>
