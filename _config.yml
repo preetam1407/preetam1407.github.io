@@ -2,10 +2,5 @@ title: Preetam Chhimpa
 description: Efficient Multimodal Learning · VLM Robustness
 theme: minima
 
-# Optional but nice:
 minima:
   skin: classic
-
-# This helps GitHub Pages build reliably
-plugins:
-  - jekyll-feed
