@@ -3,65 +3,78 @@ layout: home
 title: Preetam Chhimpa
 ---
 
-Hi! I’m **Preetam Chhimpa**, an M.Tech student in **Data Science at IIT Roorkee**.  
-My research interests lie in **efficient multimodal learning** and **adversarial evaluation of vision-language systems**, with a focus on robustness and deployment under real-world compute and data constraints.
-
-**Contact & Links**  
-- **Email:** [preetam_c@mfs.iitr.ac.in](mailto:preetam_c@mfs.iitr.ac.in)  
-- **GitHub:** https://github.com/preetam1407  
-- **LinkedIn:** https://www.linkedin.com/in/preetam-chhimpa  
+**Preetam Chhimpa**  
+M.Tech Data Science, IIT Roorkee (CGPA: 9.29) — Expected graduation: 06/2026  
+Email: [preetam_c@mfs.iitr.ac.in](mailto:preetam_c@mfs.iitr.ac.in) · GitHub: https://github.com/preetam1407 · LinkedIn: https://www.linkedin.com/in/preetam-chhimpa  
+CV (PDF): [resume.pdf](resume.pdf)
 
 ---
 
-## Research Focus
-- Compute- and memory-efficient multimodal fusion (vision + language)  
-- Robustness and adversarial evaluation of VLMs under distribution shifts  
-- Practical evaluation for real-world systems (autonomous driving, public infrastructure)
+## Research interests
+- Efficient multimodal learning (vision + language), especially compute/memory-aware fusion
+- Adversarial evaluation and robustness of vision-language models under distribution shifts
 
 ---
 
-## Selected Research & Projects
-
-### 1. Compute-efficient Multimodal Fusion for Autonomous Driving  
-**Repository:** https://github.com/preetam1407/GeoAnchors  
-Designed a compact image–text fusion pipeline for multi-view, perception/prediction-oriented VQA in autonomous driving scenarios, targeting on-vehicle compute constraints.
-
----
-
-### 2. Adversarial Evaluation of Vision-Language Models  
-**Repository:** https://github.com/preetam1407/Adversarial-Evaluation-of-VLM  
-Evaluating the robustness of VLMs under adversarial prompts and realistic distribution shifts, with an emphasis on failure modes relevant to real-world deployment.
+## Current research
+**Student Researcher, SafeTrip Lab, IIT Roorkee (Jun 2025 – Present)**  
+Compute-efficient multimodal fusion for autonomous driving (multi-view camera → T5-aligned scene embedding).
+- Reduced parameters by **52%** using anchor-token pruning, Perceiver cross-attention, and gated view pooling  
+- Results on multi-view VQA: **EM 51%**, **F1 70%**, **BLEU-4 47.1**, **ROUGE-L 69.1**, **CIDEr 2.99** (vs. baselines)
 
 ---
 
-### 3. Open-source Contribution: Hugging Face Transformers (BLT)  
-- **Pull Request:** https://github.com/huggingface/transformers/pull/42685  
-- **Issue:** https://github.com/huggingface/transformers/issues/42629  
+## Selected projects (code)
+1) **Compute-efficient multimodal fusion (GeoAnchors)**  
+https://github.com/preetam1407/GeoAnchors
 
-Contributed fixes to stabilize Byte Latent Transformer (BLT) training and CI by resolving KV-cache–related generation mismatches, improving weight initialization, and integrating BLT into shared training tests.
+2) **Adversarial Evaluation of Vision-Language Models** (Aug 2025 – Nov 2025)  
+https://github.com/preetam1407/Adversarial-Evaluation-of-VLM  
+- Training-free adversarial evaluation on **IMP-v1-3B** and **Qwen2.5-VL-7B**  
+- Answer flip rates: **75.1%** (IMP-v1-3B), **38.4%** (Qwen2.5-VL-7B)  
+- Counting deviation (mean absolute shift): **6.74**, **1.24**
+
+3) **DiffGraph+ (Heterogeneous Graph Diffusion)** (Feb 2025 – Apr 2025)  
+https://github.com/preetam1407/DiffGraph  
+- Extended DiffGraph (WSDM’25) for heterogeneous graphs with automatic view discovery via Graph Transformer  
+- DBLP author classification: **Micro-F1 78%**, **Macro-F1 77%**, **AUC 93%**
+
+4) **Flood Forecasting System** (Aug 2023 – Nov 2023)  
+Repo: https://github.com/preetam1407/Flood-Forecasting-Model  
+Dashboard: https://flood-forecasting-system.onrender.com/flood-forecasting  
+- Pixel-level inundation mapping for the Narmada basin; historical F1: **0.86** (2001–2012)
+
+5) **Cminusminus (Programming Language + Compiler)** (Jan 2024 – Apr 2024)  
+(Repo link if you want it public here)  
+- Compiler toolchain (Lark), WASM backend, unit/integration testing
+
+6) **Waste Segregation System** (Feb 2022 – May 2022)  
+Repo: https://github.com/preetam1407/Waste-Segregation-using-Deep-learning  
+Prototype: https://github.com/preetam1407/Waste-Segregation-using-Deep-learning/tree/main/prototype  
+- ResNet-50 fine-tuning; **94%** validation accuracy; OpenCV + Arduino prototype
 
 ---
 
-### 4. Heterogeneous Graph Neural Networks  
-**Repository:** https://github.com/preetam1407/DiffGraph  
-Experimental extensions of a published GNN method, focusing on heterogeneous graph settings and diffusion-based modeling.
+## Open-source (Transformers — BLT)
+- PR: https://github.com/huggingface/transformers/pull/42685  
+- Issue: https://github.com/huggingface/transformers/issues/42629  
+Contributed fixes for BLT training/CI stability (KV-cache generation mismatches, initialization, shared training tests).
 
 ---
 
-### 5. Waste Segregation System (CNN-based)  
-- **Repository:** https://github.com/preetam1407/Waste-Segregation-using-Deep-learning  
-- **Prototype images:** https://github.com/preetam1407/Waste-Segregation-using-Deep-learning/tree/main/prototype  
+## Experience (industry)
+**Scientific Computing Contractor, Mercor (Jul 2025 – Nov 2025)**  
+Built terminal-based scientific benchmarks for evaluating AI agents; auto-graded tasks with deterministic scoring.
 
-Explored multiple CNN variants for automated waste classification, including end-to-end prototyping.
+**Software Engineer Intern, IntentSignal Systems (May 2024 – Sep 2024)**  
+Built a data-as-a-service platform (Next.js) serving **15M+** B2B records; JWT auth, search, CSV export; reduced page load time by **40%**.
 
----
-
-### 6. Flood Forecasting System  
-- **Repository:** https://github.com/preetam1407/Flood-Forecasting-Model  
-- **Dashboard:** https://flood-forecasting-system.onrender.com/flood-forecasting  
-
-Built a data-driven flood forecasting pipeline with a deployed dashboard for visualization and analysis.
+**Cloud Operations Intern, Patible AI (May 2023 – Aug 2023)**  
+Scraping + ingestion pipelines; **2.6M+** records on AWS (EC2/S3); PostgreSQL ingestion optimization.
 
 ---
+
+## Skills
+Python, C++, C, SQL · PyTorch, TensorFlow, Hugging Face, scikit-learn · Git, Docker, AWS, PostgreSQL
 
 _Last updated: Jan 2026_
