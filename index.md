@@ -45,7 +45,7 @@ Dashboard: https://flood-forecasting-system.onrender.com/flood-forecasting
 - Pixel-level inundation mapping for the Narmada basin; historical F1: **0.86** (2001–2012)
 
 5) **Cminusminus (Programming Language + Compiler)** (Jan 2024 – Apr 2024)  
-(Repo link if you want it public here)  
+Repo: [https://github.com/preetam1407/Flood-Forecasting-Model ](https://github.com/IITGN-CS327-2024/our-own-compiler-com-piler-t6) 
 - Compiler toolchain (Lark), WASM backend, unit/integration testing
 
 6) **Waste Segregation System** (Feb 2022 – May 2022)  
