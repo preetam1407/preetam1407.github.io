@@ -8,777 +8,371 @@
   <title>Preetam Chhimpa</title>
   <meta name="description" content="Preetam Chhimpa — M.Tech Data Science @ IIT Roorkee. Efficient multimodal learning, VLM robustness, and applied ML systems." />
 
-  <!-- Optional: nice font. If you want zero external deps, remove this link. -->
-  <link rel="preconnect" href="https://rsms.me" />
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-
   <style>
-    /* -----------------------------
-       Design system (night-mode first)
-    ------------------------------ */
     :root{
-      --bg0:#070A12;
-      --bg1:#090D1A;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.085);
-      --stroke: rgba(255,255,255,.12);
-      --text:#EAF0FF;
-      --muted: rgba(234,240,255,.72);
-      --muted2: rgba(234,240,255,.55);
-
-      --accent1:#8B5CF6; /* violet */
-      --accent2:#22D3EE; /* cyan */
-      --accent3:#34D399; /* emerald */
-      --accent4:#FB7185; /* rose */
-      --accent5:#FBBF24; /* amber */
-
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --shadow2: 0 10px 30px rgba(0,0,0,.35);
-
-      --radius: 18px;
-      --radius2: 26px;
-
-      --max: 1040px;
-      --pad: 22px;
-
-      --focus: 0 0 0 3px rgba(34,211,238,.35), 0 0 0 1px rgba(255,255,255,.14) inset;
+      --bg: #0b0f19;
+      --panel: #0f1629;
+      --text: #e9eefc;
+      --muted: rgba(233,238,252,.72);
+      --muted2: rgba(233,238,252,.55);
+      --border: rgba(233,238,252,.14);
+      --accent: #7aa7ff;
+      --max: 900px;
+      --radius: 14px;
+      --focus: 0 0 0 3px rgba(122,167,255,.25);
     }
 
-    /* Light theme */
     [data-theme="light"]{
-      --bg0:#F6F7FB;
-      --bg1:#FFFFFF;
-      --card: rgba(10,12,20,.05);
-      --card2: rgba(10,12,20,.07);
-      --stroke: rgba(10,12,20,.10);
-      --text:#0B1020;
-      --muted: rgba(11,16,32,.75);
-      --muted2: rgba(11,16,32,.58);
-
-      --shadow: 0 18px 60px rgba(13,18,34,.12);
-      --shadow2: 0 10px 30px rgba(13,18,34,.10);
-      --focus: 0 0 0 3px rgba(139,92,246,.25), 0 0 0 1px rgba(0,0,0,.08) inset;
+      --bg: #ffffff;
+      --panel: #f6f7fb;
+      --text: #0b1020;
+      --muted: rgba(11,16,32,.72);
+      --muted2: rgba(11,16,32,.55);
+      --border: rgba(11,16,32,.12);
+      --accent: #2b5cff;
+      --focus: 0 0 0 3px rgba(43,92,255,.18);
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--text);
-      background: radial-gradient(1200px 700px at 20% 0%, rgba(139,92,246,.22), transparent 55%),
-                  radial-gradient(1000px 700px at 80% 20%, rgba(34,211,238,.18), transparent 55%),
-                  radial-gradient(900px 650px at 60% 95%, rgba(52,211,153,.16), transparent 55%),
-                  linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
+      background: var(--bg);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ opacity: .95; }
-    ::selection{ background: rgba(139,92,246,.35); }
+    a{
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    a:hover{ text-decoration-thickness: 2px; }
 
-    /* Background blobs (colorful, subtle) */
-    .bg{
-      position:fixed; inset:0; pointer-events:none; z-index:-1; overflow:hidden;
-    }
-    .blob{
-      position:absolute;
-      width: 680px; height: 680px;
-      filter: blur(55px);
-      opacity: .42;
-      transform: translate3d(0,0,0);
-      animation: float 18s ease-in-out infinite;
-      border-radius: 999px;
-    }
-    .b1{ left:-180px; top:-180px; background: radial-gradient(circle at 30% 30%, rgba(139,92,246,.95), transparent 60%); }
-    .b2{ right:-220px; top:-120px; background: radial-gradient(circle at 35% 35%, rgba(34,211,238,.95), transparent 60%); animation-duration: 22s; }
-    .b3{ left: 20%; bottom:-320px; background: radial-gradient(circle at 40% 40%, rgba(52,211,153,.9), transparent 60%); animation-duration: 26s; }
-    .noise{
-      position:absolute; inset:-40%;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E");
-      opacity:.09;
-      transform: rotate(8deg);
-      mix-blend-mode: overlay;
-    }
-    @keyframes float{
-      0%,100%{ transform: translate3d(0,0,0) scale(1); }
-      50%{ transform: translate3d(40px, 28px, 0) scale(1.04); }
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 18px 70px;
     }
 
-    /* Layout */
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 36px 18px 72px; }
-    .skip{
-      position:absolute; left:-999px; top:10px; padding:10px 12px;
-      background: var(--card2); border: 1px solid var(--stroke); border-radius: 12px;
-    }
-    .skip:focus{ left: 18px; box-shadow: var(--focus); outline: none; }
-
-    /* Top bar */
     .top{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 26px;
-      position: sticky; top: 0;
-      padding: 16px 0;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,0));
-      z-index: 10;
-    }
-    [data-theme="light"] .top{
-      background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0));
-    }
-    .brand{
-      display:flex; align-items:center; gap: 12px;
-      min-width: 220px;
-    }
-    .avatar{
-      width: 42px; height: 42px; border-radius: 14px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(251,113,133,.9), transparent 55%),
-        radial-gradient(circle at 70% 30%, rgba(34,211,238,.9), transparent 55%),
-        radial-gradient(circle at 50% 80%, rgba(139,92,246,.9), transparent 55%),
-        rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.14);
-      box-shadow: var(--shadow2);
-    }
-    .brand .name{ font-weight: 720; letter-spacing: -0.02em; }
-    .brand .tag{ font-size: 12px; color: var(--muted2); margin-top: 2px; }
-
-    .nav{
-      display:flex; align-items:center; gap: 14px; flex-wrap: wrap;
-      justify-content:center;
-    }
-    .nav a{
-      font-size: 13px; color: var(--muted);
-      padding: 8px 10px; border-radius: 12px;
-      border: 1px solid transparent;
-    }
-    .nav a:hover{
-      border-color: var(--stroke);
-      background: rgba(255,255,255,.05);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 28px;
     }
 
-    .actions{ display:flex; align-items:center; gap: 10px; min-width: 220px; justify-content:flex-end; }
-
-    .btn{
-      display:inline-flex; align-items:center; gap: 8px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--stroke);
-      color: var(--text);
-      box-shadow: 0 1px 0 rgba(255,255,255,.06) inset;
-      transition: transform .15s ease, background .2s ease, border-color .2s ease;
-      user-select:none;
+    .name{
+      font-size: 30px;
+      letter-spacing: -0.02em;
+      font-weight: 750;
+      margin: 0 0 6px;
     }
-    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
-    .btn:active{ transform: translateY(0px); }
-    .btn:focus{ outline:none; box-shadow: var(--focus); }
-
-    .pill{
-      display:inline-flex; align-items:center;
-      font-size: 12px;
+    .subtitle{
+      margin: 0;
       color: var(--muted);
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.05);
-    }
-
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 18px;
-      align-items: stretch;
-      margin-top: 10px;
-    }
-
-    .card{
-      position: relative;
-      border-radius: var(--radius2);
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(700px 220px at 10% 0%, rgba(139,92,246,.20), transparent 55%),
-        radial-gradient(700px 220px at 80% 10%, rgba(34,211,238,.16), transparent 55%),
-        radial-gradient(700px 220px at 50% 120%, rgba(52,211,153,.12), transparent 55%);
-      opacity: .85;
-      pointer-events:none;
-    }
-    .card > *{ position: relative; }
-
-    .heroMain{ padding: 26px; }
-    .kicker{
-      display:flex; gap: 10px; align-items:center; flex-wrap:wrap;
-      margin-bottom: 14px;
-    }
-    .kicker .dot{
-      width: 8px; height: 8px; border-radius: 99px;
-      background: linear-gradient(90deg, var(--accent2), var(--accent1));
-      box-shadow: 0 0 0 4px rgba(34,211,238,.14);
-    }
-    h1{
-      margin: 10px 0 10px;
-      font-size: clamp(32px, 4vw, 44px);
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-    }
-    .sub{
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.55;
-      margin-bottom: 18px;
-      max-width: 62ch;
-    }
-    .meta{
-      display:flex; gap: 10px; flex-wrap:wrap;
-      margin: 14px 0 8px;
-    }
-    .meta .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--stroke);
-      color: var(--muted);
-      font-size: 12.5px;
-    }
-    .links{
-      display:flex; gap: 10px; flex-wrap:wrap;
-      margin-top: 14px;
-    }
-    .primary{
-      background: linear-gradient(90deg, rgba(139,92,246,.22), rgba(34,211,238,.18));
-      border-color: rgba(255,255,255,.18);
-    }
-
-    .heroSide{ padding: 18px; display:flex; flex-direction:column; gap: 12px; }
-    .stat{
-      padding: 16px;
-      border-radius: var(--radius);
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.045);
-    }
-    .stat .label{ color: var(--muted2); font-size: 12px; letter-spacing: .02em; text-transform: uppercase; }
-    .stat .value{ font-size: 18px; margin-top: 6px; letter-spacing: -0.02em; }
-    .stat .small{ margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.45; }
-
-    /* Sections */
-    section{ margin-top: 18px; }
-    .sectionCard{ padding: 22px; }
-    h2{
-      margin: 0 0 12px;
-      font-size: 16px;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .grid2{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .list{
-      margin: 0; padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.6;
       font-size: 14px;
     }
-    .list li{ margin: 6px 0; }
 
-    /* Projects */
-    .projects{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+    .links{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      color: var(--muted);
+      font-size: 14px;
     }
-    .proj{
-      grid-column: span 6;
-      padding: 18px;
-      border-radius: var(--radius2);
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.045);
-      position: relative;
-      overflow:hidden;
-      transform-style: preserve-3d;
-      will-change: transform;
-      transition: transform .18s ease, border-color .2s ease, background .2s ease;
+    .links a{ color: var(--accent); }
+
+    .btn{
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font: inherit;
     }
-    .proj:hover{
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.06);
+    .btn:hover{ color: var(--text); border-color: rgba(255,255,255,.22); }
+    [data-theme="light"] .btn:hover{ border-color: rgba(11,16,32,.22); }
+    .btn:focus{ outline:none; box-shadow: var(--focus); }
+
+    .section{
+      padding: 18px 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      margin: 14px 0;
     }
-    .proj::after{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(400px 180px at 20% 0%, rgba(251,113,133,.14), transparent 60%),
-        radial-gradient(420px 200px at 90% 30%, rgba(34,211,238,.12), transparent 60%);
-      opacity: .7;
-      pointer-events:none;
+
+    h2{
+      margin: 0 0 10px;
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted2);
+      font-weight: 700;
     }
-    .proj > *{ position: relative; }
-    .projTop{
-      display:flex; align-items:flex-start; justify-content:space-between; gap: 10px;
-      margin-bottom: 10px;
+
+    p{ margin: 10px 0; }
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
     }
-    .projTitle{
-      font-weight: 720; letter-spacing: -0.02em; line-height: 1.2;
-      margin:0;
+    li{ margin: 6px 0; }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:baseline;
     }
-    .projMeta{
-      font-size: 12px; color: var(--muted2);
+
+    .title{
+      font-weight: 700;
+      color: var(--text);
+    }
+    .time{
+      font-size: 13px;
+      color: var(--muted2);
+      white-space: nowrap;
+    }
+
+    .project{
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+    }
+    .project:first-of-type{ border-top: none; padding-top: 2px; }
+
+    .meta{
       margin-top: 6px;
+      color: var(--muted);
+      font-size: 14px;
     }
-    .projLinks{
-      display:flex; gap: 8px; flex-wrap:wrap;
-      margin-top: 12px;
-    }
-    .tiny{
-      font-size: 12px; color: var(--muted);
-      padding: 6px 10px; border-radius: 999px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
-      display:inline-flex; align-items:center; gap: 8px;
-    }
-    .tiny:hover{ background: rgba(255,255,255,.06); }
 
-    /* Experience */
-    .timeline{ display:flex; flex-direction:column; gap: 12px; }
-    .item{
-      padding: 16px;
-      border-radius: var(--radius2);
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.04);
-    }
-    .item .toprow{
-      display:flex; justify-content:space-between; gap: 10px; flex-wrap:wrap;
-      margin-bottom: 8px;
-    }
-    .item .role{ font-weight: 700; letter-spacing:-0.02em; }
-    .item .when{ font-size: 12px; color: var(--muted2); }
-    .item p{ margin: 8px 0 0; color: var(--muted); line-height: 1.55; font-size: 14px; }
-
-    /* Footer */
-    footer{
-      margin-top: 18px;
-      padding: 18px 6px;
+    .foot{
+      margin-top: 26px;
       color: var(--muted2);
       font-size: 13px;
-      display:flex; justify-content:space-between; flex-wrap:wrap; gap: 8px;
-    }
-    .footLinks{ display:flex; gap: 12px; flex-wrap:wrap; }
-
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero{ grid-template-columns: 1fr; }
-      .brand{ min-width: 0; }
-      .actions{ min-width: 0; }
-      .projects .proj{ grid-column: span 12; }
-      .grid2{ grid-template-columns: 1fr; }
-      .top{ position: relative; backdrop-filter:none; }
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    /* Accessibility & motion */
-    @media (prefers-reduced-motion: reduce){
-      .blob{ animation:none; }
-      .proj, .btn, .card{ transition:none; }
+    @media (max-width: 720px){
+      .top{ flex-direction: column; }
+    }
+
+    @media print{
+      .btn{ display:none; }
+      body{ background:#fff; color:#000; }
+      a{ color:#000; }
+      .section{ border: 1px solid #ddd; }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip" href="#content">Skip to content</a>
-
-  <div class="bg" aria-hidden="true">
-    <div class="blob b1"></div>
-    <div class="blob b2"></div>
-    <div class="blob b3"></div>
-    <div class="noise"></div>
-  </div>
-
   <div class="wrap">
-    <!-- Top / Nav -->
-    <div class="top">
-      <div class="brand">
-        <div class="avatar" aria-hidden="true"></div>
-        <div>
-          <div class="name">Preetam Chhimpa</div>
-          <div class="tag">M.Tech Data Science · IIT Roorkee · Grad: Jun 2026</div>
+
+    <header class="top">
+      <div>
+        <h1 class="name">Preetam Chhimpa</h1>
+        <p class="subtitle">
+          M.Tech Data Science, IIT Roorkee (CGPA: 9.29) · Expected graduation: June 2026
+        </p>
+
+        <div class="links">
+          <a href="mailto:preetam_c@mfs.iitr.ac.in">Email</a>
+          <span>·</span>
+          <a href="https://github.com/preetam1407" target="_blank" rel="noreferrer">GitHub</a>
+          <span>·</span>
+          <a href="https://www.linkedin.com/in/preetam-chhimpa" target="_blank" rel="noreferrer">LinkedIn</a>
+          <span>·</span>
+          <a href="resume.pdf">CV (PDF)</a>
         </div>
       </div>
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#research">Research</a>
-        <a href="#projects">Projects</a>
-        <a href="#open-source">Open-source</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-      </nav>
+      <button id="themeBtn" class="btn" type="button" aria-label="Toggle theme">Theme</button>
+    </header>
 
-      <div class="actions">
-        <button id="themeBtn" class="btn" type="button" aria-label="Toggle theme">
-          <span id="themeIcon" aria-hidden="true">🌙</span>
-          <span class="hideSm">Theme</span>
-        </button>
-        <a class="btn primary" href="resume.pdf">
-          <span aria-hidden="true">⬇️</span> CV (PDF)
-        </a>
-      </div>
-    </div>
+    <main>
+      <section class="section">
+        <h2>Research interests</h2>
+        <ul>
+          <li>Efficient multimodal learning (vision + language), compute- and memory-aware fusion</li>
+          <li>Adversarial evaluation and robustness of vision-language models under distribution shifts</li>
+        </ul>
+      </section>
 
-    <!-- Hero -->
-    <div class="hero" id="content">
-      <div class="card heroMain tilt">
-        <div class="heroMain">
-          <div class="kicker">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="pill">Efficient multimodal learning · VLM robustness</span>
-            <span class="pill">Student Researcher @ SafeTrip Lab</span>
+      <section class="section">
+        <h2>Current research</h2>
+        <p class="title">Student Researcher, SafeTrip Lab, IIT Roorkee <span class="time">(Jun 2025 – Present)</span></p>
+        <p class="meta">
+          Compute-efficient multimodal fusion for autonomous driving (multi-view camera → T5-aligned scene embedding).
+        </p>
+        <ul>
+          <li>Reduced parameters by <b>52%</b> using anchor-token pruning, Perceiver cross-attention, and gated view pooling</li>
+          <li>Results on multi-view VQA: <b>EM 51%</b>, <b>F1 70%</b>, BLEU-4 47.1, ROUGE-L 69.1, CIDEr 2.99</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h2>Selected projects</h2>
+
+        <div class="project">
+          <div class="row">
+            <div class="title">GeoAnchors — Compute-efficient multimodal fusion</div>
           </div>
-
-          <h1>Building compute-efficient multimodal systems that stay reliable under shifts.</h1>
-
-          <p class="sub">
-            I’m an M.Tech Data Science student at IIT Roorkee (CGPA: 9.29), working on memory/compute-aware
-            fusion for multi-view perception and evaluation of vision-language robustness.
-          </p>
-
           <div class="meta">
-            <span class="chip">📍 IIT Roorkee</span>
-            <span class="chip">🎓 Expected: Jun 2026</span>
-            <span class="chip">🧠 Focus: VLMs, efficiency, robustness</span>
-          </div>
-
-          <div class="links">
-            <a class="btn" href="mailto:preetam_c@mfs.iitr.ac.in">Email</a>
-            <a class="btn" href="https://github.com/preetam1407" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/preetam-chhimpa" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card heroSide tilt" aria-label="Highlights">
-        <div class="stat">
-          <div class="label">Current research</div>
-          <div class="value">Compute-efficient multi-view fusion</div>
-          <div class="small">
-            Multi-view camera → T5-aligned scene embedding with anchor-token pruning, Perceiver cross-attn,
-            and gated view pooling.
+            Repo: <a href="https://github.com/preetam1407/GeoAnchors" target="_blank" rel="noreferrer">github.com/preetam1407/GeoAnchors</a>
           </div>
         </div>
 
-        <div class="stat">
-          <div class="label">Efficiency</div>
-          <div class="value">↓ 52% parameters</div>
-          <div class="small">Reduced parameters while preserving performance on multi-view VQA.</div>
-        </div>
-
-        <div class="stat">
-          <div class="label">Multi-view VQA results</div>
-          <div class="value">EM 51% · F1 70%</div>
-          <div class="small">BLEU-4 47.1 · ROUGE-L 69.1 · CIDEr 2.99</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Research interests + Current research -->
-    <section id="research" class="card sectionCard">
-      <h2>Research</h2>
-      <div class="grid2">
-        <div>
-          <div class="pill" style="margin-bottom:10px;">Research interests</div>
-          <ul class="list">
-            <li>Efficient multimodal learning (vision + language), compute- and memory-aware fusion</li>
-            <li>Adversarial evaluation and robustness of VLMs under distribution shifts</li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="pill" style="margin-bottom:10px;">Current</div>
-          <ul class="list">
-            <li><b>Student Researcher, SafeTrip Lab, IIT Roorkee</b> (Jun 2025 – Present)</li>
-            <li>Compute-efficient multimodal fusion for autonomous driving (multi-view camera → T5-aligned scene embedding)</li>
-            <li>Anchor-token pruning + Perceiver cross-attn + gated view pooling</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="card sectionCard">
-      <h2>Selected projects</h2>
-
-      <div class="projects">
-        <article class="proj tilt">
-          <div class="projTop">
-            <div>
-              <h3 class="projTitle">GeoAnchors — Compute-efficient multimodal fusion</h3>
-              <div class="projMeta">Multi-view camera → compact scene embedding (T5-aligned)</div>
-            </div>
-            <span class="pill">Featured</span>
+        <div class="project">
+          <div class="row">
+            <div class="title">Adversarial Evaluation of Vision-Language Models</div>
+            <div class="time">Aug 2025 – Nov 2025</div>
           </div>
-          <ul class="list">
-            <li>Anchor-token pruning + cross-attention + gated pooling for view fusion</li>
-            <li>Built for compute/memory efficiency in multi-view settings</li>
-          </ul>
-          <div class="projLinks">
-            <a class="tiny" href="https://github.com/preetam1407/GeoAnchors" target="_blank" rel="noreferrer">↗ Repo</a>
+          <div class="meta">
+            Repo: <a href="https://github.com/preetam1407/Adversarial-Evaluation-of-VLM" target="_blank" rel="noreferrer">github.com/preetam1407/Adversarial-Evaluation-of-VLM</a>
           </div>
-        </article>
-
-        <article class="proj tilt">
-          <div class="projTop">
-            <div>
-              <h3 class="projTitle">Adversarial Evaluation of VLMs</h3>
-              <div class="projMeta">Aug 2025 – Nov 2025 · Training-free adversarial evaluation</div>
-            </div>
-            <span class="pill">Robustness</span>
-          </div>
-          <ul class="list">
-            <li>Evaluated <b>IMP-v1-3B</b> and <b>Qwen2.5-VL-7B</b> under perturbations</li>
+          <ul>
+            <li>Training-free adversarial evaluation on <b>IMP-v1-3B</b> and <b>Qwen2.5-VL-7B</b></li>
             <li>Answer flip rates: <b>75.1%</b> (IMP-v1-3B), <b>38.4%</b> (Qwen2.5-VL-7B)</li>
-            <li>Counting deviation (mean abs shift): <b>6.74</b>, <b>1.24</b></li>
+            <li>Counting deviation (mean absolute shift): <b>6.74</b>, <b>1.24</b></li>
           </ul>
-          <div class="projLinks">
-            <a class="tiny" href="https://github.com/preetam1407/Adversarial-Evaluation-of-VLM" target="_blank" rel="noreferrer">↗ Repo</a>
-          </div>
-        </article>
+        </div>
 
-        <article class="proj tilt">
-          <div class="projTop">
-            <div>
-              <h3 class="projTitle">DiffGraph+ — Heterogeneous Graph Diffusion</h3>
-              <div class="projMeta">Feb 2025 – Apr 2025</div>
-            </div>
-            <span class="pill">Graphs</span>
+        <div class="project">
+          <div class="row">
+            <div class="title">DiffGraph+ — Heterogeneous Graph Diffusion</div>
+            <div class="time">Feb 2025 – Apr 2025</div>
           </div>
-          <ul class="list">
+          <div class="meta">
+            Repo: <a href="https://github.com/preetam1407/DiffGraph" target="_blank" rel="noreferrer">github.com/preetam1407/DiffGraph</a>
+          </div>
+          <ul>
             <li>Extended DiffGraph (WSDM’25) for heterogeneous graphs with automatic view discovery via Graph Transformer</li>
             <li>DBLP author classification: <b>Micro-F1 78%</b>, <b>Macro-F1 77%</b>, <b>AUC 93%</b></li>
           </ul>
-          <div class="projLinks">
-            <a class="tiny" href="https://github.com/preetam1407/DiffGraph" target="_blank" rel="noreferrer">↗ Repo</a>
-          </div>
-        </article>
+        </div>
 
-        <article class="proj tilt">
-          <div class="projTop">
-            <div>
-              <h3 class="projTitle">Flood Forecasting System</h3>
-              <div class="projMeta">Aug 2023 – Nov 2023</div>
-            </div>
-            <span class="pill">Applied ML</span>
+        <div class="project">
+          <div class="row">
+            <div class="title">Flood Forecasting System</div>
+            <div class="time">Aug 2023 – Nov 2023</div>
           </div>
-          <ul class="list">
-            <li>Pixel-level inundation mapping for the Narmada basin</li>
-            <li>Historical F1: <b>0.86</b> (2001–2012)</li>
+          <div class="meta">
+            <a href="https://github.com/preetam1407/Flood-Forecasting-Model" target="_blank" rel="noreferrer">Code</a>
+            ·
+            <a href="https://flood-forecasting-system.onrender.com/flood-forecasting" target="_blank" rel="noreferrer">Dashboard</a>
+          </div>
+          <ul>
+            <li>Pixel-level inundation mapping for the Narmada basin; historical F1: <b>0.86</b> (2001–2012)</li>
           </ul>
-          <div class="projLinks">
-            <a class="tiny" href="https://github.com/preetam1407/Flood-Forecasting-Model" target="_blank" rel="noreferrer">↗ Code</a>
-            <a class="tiny" href="https://flood-forecasting-system.onrender.com/flood-forecasting" target="_blank" rel="noreferrer">↗ Dashboard</a>
-          </div>
-        </article>
+        </div>
 
-        <article class="proj tilt">
-          <div class="projTop">
-            <div>
-              <h3 class="projTitle">Cminusminus — Programming Language & Compiler</h3>
-              <div class="projMeta">Jan 2024 – Apr 2024</div>
-            </div>
-            <span class="pill">Systems</span>
+        <div class="project">
+          <div class="row">
+            <div class="title">Cminusminus — Programming Language & Compiler</div>
+            <div class="time">Jan 2024 – Apr 2024</div>
           </div>
-          <ul class="list">
-            <li>Compiler toolchain using <b>Lark</b>, WASM backend, unit + integration tests</li>
+          <div class="meta">
+            Repo: <a href="https://github.com/IITGN-CS327-2024/our-own-compiler-com-piler-t6" target="_blank" rel="noreferrer">github.com/IITGN-CS327-2024/our-own-compiler-com-piler-t6</a>
+          </div>
+          <ul>
+            <li>Compiler toolchain using <b>Lark</b>, WASM backend, unit and integration testing</li>
           </ul>
-          <div class="projLinks">
-            <a class="tiny" href="https://github.com/IITGN-CS327-2024/our-own-compiler-com-piler-t6" target="_blank" rel="noreferrer">↗ Repo</a>
-          </div>
-        </article>
+        </div>
 
-        <article class="proj tilt">
-          <div class="projTop">
-            <div>
-              <h3 class="projTitle">Waste Segregation System</h3>
-              <div class="projMeta">Feb 2022 – May 2022</div>
-            </div>
-            <span class="pill">Vision</span>
+        <div class="project">
+          <div class="row">
+            <div class="title">Waste Segregation System</div>
+            <div class="time">Feb 2022 – May 2022</div>
           </div>
-          <ul class="list">
-            <li>ResNet-50 fine-tuning; <b>94%</b> validation accuracy</li>
-            <li>OpenCV + Arduino prototype</li>
+          <div class="meta">
+            <a href="https://github.com/preetam1407/Waste-Segregation-using-Deep-learning" target="_blank" rel="noreferrer">Code</a>
+            ·
+            <a href="https://github.com/preetam1407/Waste-Segregation-using-Deep-learning/tree/main/prototype" target="_blank" rel="noreferrer">Prototype</a>
+          </div>
+          <ul>
+            <li>ResNet-50 fine-tuning; <b>94%</b> validation accuracy; OpenCV + Arduino prototype</li>
           </ul>
-          <div class="projLinks">
-            <a class="tiny" href="https://github.com/preetam1407/Waste-Segregation-using-Deep-learning" target="_blank" rel="noreferrer">↗ Code</a>
-            <a class="tiny" href="https://github.com/preetam1407/Waste-Segregation-using-Deep-learning/tree/main/prototype" target="_blank" rel="noreferrer">↗ Prototype</a>
-          </div>
-        </article>
-      </div>
-    </section>
+        </div>
+      </section>
 
-    <!-- Open source -->
-    <section id="open-source" class="card sectionCard">
-      <h2>Open-source</h2>
-      <div class="grid2">
-        <div class="item">
-          <div class="toprow">
-            <div class="role">Hugging Face Transformers — BLT</div>
-            <div class="when">2025</div>
-          </div>
-          <p>
+      <section class="section">
+        <h2>Open-source</h2>
+        <ul>
+          <li>
+            PR: <a href="https://github.com/huggingface/transformers/pull/42685" target="_blank" rel="noreferrer">huggingface/transformers#42685</a>
+          </li>
+          <li>
+            Issue: <a href="https://github.com/huggingface/transformers/issues/42629" target="_blank" rel="noreferrer">huggingface/transformers#42629</a>
+          </li>
+          <li>
             Contributed fixes for BLT training and CI stability (KV-cache generation mismatches, initialization, shared training tests).
-          </p>
-          <div class="projLinks" style="margin-top:12px;">
-            <a class="tiny" href="https://github.com/huggingface/transformers/pull/42685" target="_blank" rel="noreferrer">↗ PR #42685</a>
-            <a class="tiny" href="https://github.com/huggingface/transformers/issues/42629" target="_blank" rel="noreferrer">↗ Issue #42629</a>
-          </div>
-        </div>
+          </li>
+        </ul>
+      </section>
 
-        <div class="item">
-          <div class="toprow">
-            <div class="role">Quick links</div>
-            <div class="when">Profiles</div>
-          </div>
-          <p>
-            Prefer fast contact? Email works best.
-          </p>
-          <div class="projLinks" style="margin-top:12px;">
-            <a class="tiny" href="mailto:preetam_c@mfs.iitr.ac.in">✉️ Email</a>
-            <a class="tiny" href="https://github.com/preetam1407" target="_blank" rel="noreferrer">↗ GitHub</a>
-            <a class="tiny" href="https://www.linkedin.com/in/preetam-chhimpa" target="_blank" rel="noreferrer">↗ LinkedIn</a>
-          </div>
+      <section class="section">
+        <h2>Experience</h2>
+
+        <p class="title">Scientific Computing Contractor, Mercor <span class="time">(Jul 2025 – Nov 2025)</span></p>
+        <p class="meta">Built terminal-based scientific benchmarks for evaluating AI agents; auto-graded tasks with deterministic scoring.</p>
+
+        <p class="title" style="margin-top:14px;">Software Engineer Intern, IntentSignal Systems <span class="time">(May 2024 – Sep 2024)</span></p>
+        <p class="meta">Built a data-as-a-service platform (Next.js) serving <b>15M+</b> B2B records; JWT auth, search, CSV export; reduced page load time by <b>40%</b>.</p>
+
+        <p class="title" style="margin-top:14px;">Cloud Operations Intern, Patible AI <span class="time">(May 2023 – Aug 2023)</span></p>
+        <p class="meta">Scraping and ingestion pipelines; <b>2.6M+</b> records on AWS (EC2/S3); PostgreSQL ingestion optimization.</p>
+      </section>
+
+      <section class="section">
+        <h2>Skills</h2>
+        <p class="meta">Python, C++, C, SQL · PyTorch, TensorFlow, Hugging Face · Git, Docker, AWS, PostgreSQL</p>
+      </section>
+
+      <div class="foot">
+        <div>Last updated: Jan 2026</div>
+        <div>
+          <a href="resume.pdf">CV</a>
+          <span style="color:var(--muted2);"> · </span>
+          <a href="mailto:preetam_c@mfs.iitr.ac.in">Email</a>
         </div>
       </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="card sectionCard">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <div class="item tilt">
-          <div class="toprow">
-            <div class="role">Scientific Computing Contractor · Mercor</div>
-            <div class="when">Jul 2025 – Nov 2025</div>
-          </div>
-          <p>
-            Built terminal-based scientific benchmarks for evaluating AI agents; auto-graded tasks with deterministic scoring.
-          </p>
-        </div>
-
-        <div class="item tilt">
-          <div class="toprow">
-            <div class="role">Software Engineer Intern · IntentSignal Systems</div>
-            <div class="when">May 2024 – Sep 2024</div>
-          </div>
-          <p>
-            Built a data-as-a-service platform (Next.js) serving <b>15M+</b> B2B records; JWT auth, search, CSV export; reduced page load time by <b>40%</b>.
-          </p>
-        </div>
-
-        <div class="item tilt">
-          <div class="toprow">
-            <div class="role">Cloud Operations Intern · Patible AI</div>
-            <div class="when">May 2023 – Aug 2023</div>
-          </div>
-          <p>
-            Scraping and ingestion pipelines; <b>2.6M+</b> records on AWS (EC2/S3); PostgreSQL ingestion optimization.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="card sectionCard">
-      <h2>Skills</h2>
-      <div class="grid2">
-        <div class="item">
-          <div class="toprow">
-            <div class="role">Languages</div>
-            <div class="when">Core</div>
-          </div>
-          <p>Python, C++, C, SQL</p>
-        </div>
-        <div class="item">
-          <div class="toprow">
-            <div class="role">ML / Systems</div>
-            <div class="when">Tooling</div>
-          </div>
-          <p>PyTorch, TensorFlow, Hugging Face · Git, Docker, AWS, PostgreSQL</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div>Last updated: <span id="lastUpdated">Jan 2026</span></div>
-      <div class="footLinks">
-        <a href="#content">Back to top ↑</a>
-        <a href="resume.pdf">CV</a>
-        <a href="https://github.com/preetam1407" target="_blank" rel="noreferrer">GitHub</a>
-      </div>
-    </footer>
+    </main>
   </div>
 
   <script>
-    // -----------------------------
-    // Theme (night-mode first, persists)
-    // -----------------------------
+    // minimal theme toggle (dark default)
     (function () {
       const key = "theme";
       const root = document.documentElement;
+      const btn = document.getElementById("themeBtn");
 
-      function setTheme(t) {
-        if (t === "light") root.setAttribute("data-theme", "light");
-        else root.removeAttribute("data-theme"); // default = dark
+      function apply(t){
+        if(t === "light") root.setAttribute("data-theme","light");
+        else root.removeAttribute("data-theme");
         localStorage.setItem(key, t);
-        const icon = document.getElementById("themeIcon");
-        if (icon) icon.textContent = (t === "light") ? "☀️" : "🌙";
+        btn.textContent = (t === "light") ? "Dark" : "Light";
       }
 
       const saved = localStorage.getItem(key);
-      if (saved === "light" || saved === "dark") setTheme(saved);
-      else setTheme("dark"); // nightmode default
+      apply(saved === "light" ? "light" : "dark");
 
-      document.getElementById("themeBtn")?.addEventListener("click", () => {
-        const current = root.getAttribute("data-theme") === "light" ? "light" : "dark";
-        setTheme(current === "light" ? "dark" : "light");
-      });
-    })();
-
-    // -----------------------------
-    // Subtle 3D tilt (cards)
-    // -----------------------------
-    (function () {
-      const maxTilt = 7; // degrees
-      const cards = document.querySelectorAll(".tilt");
-
-      function onMove(e, el) {
-        const r = el.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width;   // 0..1
-        const y = (e.clientY - r.top) / r.height;   // 0..1
-        const rx = (0.5 - y) * maxTilt;
-        const ry = (x - 0.5) * maxTilt;
-        el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-1px)`;
-      }
-
-      function reset(el) {
-        el.style.transform = "";
-      }
-
-      cards.forEach(el => {
-        el.addEventListener("mousemove", (e) => onMove(e, el));
-        el.addEventListener("mouseleave", () => reset(el));
+      btn.addEventListener("click", () => {
+        const isLight = root.getAttribute("data-theme") === "light";
+        apply(isLight ? "dark" : "light");
       });
     })();
   </script>
